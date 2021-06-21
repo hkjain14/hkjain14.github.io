@@ -59,7 +59,8 @@ async function findVaccinationCenters(age, vaccine, pin, isFreeVaccineOnly, dose
             const {centers} = await getRequest(centersUrl);
             centers && centers.map((center) => {
                 center.sessions && center.sessions.map((session) => {
-                    if (session.min_age_limit === ageToCheck && session.available_capacity !== 0 && matchVaccineArray.includes(session.vaccine.toUpperCase())) {
+                    const doseToCheck = dose === '1' ? session.available_capacity_dose1 : session.available_capacity_dose2;
+                    if (session.min_age_limit === ageToCheck && doseToCheck !== 0 && matchVaccineArray.includes(session.vaccine.toUpperCase())) {
                         const vaccinationLogString = session.vaccine !== '' ? session.vaccine.toUpperCase() : 'Unknown';
                         const feeType = center.fee_type;
                         let cost;

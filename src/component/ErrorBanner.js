@@ -6,7 +6,6 @@ function ErrorBanner() {
     const updateErrorMessage = (event) => {
         setErrorMessage(event.detail.errorMessage);
     };
-
     const clearErrorMessage = () => {
         setErrorMessage(undefined);
     }
