@@ -1,5 +1,6 @@
 {
-  "name": "Indian Vaccine Slot Finder",
+  "homepage": "https://hkjain14.github.io/",
+  "name": "IndianVaccineSlotFinder",
   "version": "0.1.0",
   "description": "A website to find Covid-19 Indian vaccination slot availability in a pincode",
   "author": "hkjain14",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
