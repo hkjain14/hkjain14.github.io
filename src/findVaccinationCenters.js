@@ -106,9 +106,15 @@ async function findVaccinationCenters(age, vaccine, pin, isFreeVaccineOnly, dose
         }
         return isCenterFound;
     } catch (e) {
+        let errorString = 'Unknown error.';
+        if(e.response && e.response.data && e.response.data.error) {
+            errorString = e.response.data.error;
+        } else if (e.response && e.response.data && e.response.data.message) {
+            errorString = e.response.data.message;
+        }
         const errorEvent = new CustomEvent("errorEvent", {
                 detail: {
-                    errorMessage: `Error occurred: ${e.response.data.error}`,
+                    errorMessage: `Error occurred: ${errorString}`,
                 },
             },
         );
